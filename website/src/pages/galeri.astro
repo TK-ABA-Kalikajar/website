@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Image categories based on the extracted content
+const imageCategories = [
+  {
+    title: "Gedung & Fasilitas",
+    description: "Fasilitas dan ruang kelas TK ABA Kalikajar",
+    images: [
+      { src: "/images/image_1.png", alt: "Gedung TK ABA Kalikajar" },
+      { src: "/images/image_27.jpg", alt: "Ruang Kelas A1" },
+      { src: "/images/image_33.jpg", alt: "Ruang Kelas" },
+    ]
+  },
+  {
+    title: "Kegiatan Pembelajaran",
+    description: "Aktivitas belajar mengajar di kelas",
+    images: [
+      { src: "/images/image_2.jpeg", alt: "Kegiatan Belajar di Kelas" },
+      { src: "/images/image_3.jpg", alt: "Pembelajaran" },
+      { src: "/images/image_14.jpg", alt: "Aktivitas Siswa" },
+    ]
+  },
+  {
+    title: "Kegiatan Khusus",
+    description: "Peringatan hari besar dan kegiatan khusus",
+    images: [
+      { src: "/images/image_4.jpeg", alt: "Hari Santri Nasional" },
+      { src: "/images/image_5.jpeg", alt: "Hari Anak Nasional" },
+      { src: "/images/image_15.jpeg", alt: "Upacara Bendera" },
+    ]
+  },
+  {
+    title: "Kunjungan Edukatif",
+    description: "Kegiatan kunjungan ke berbagai instansi",
+    images: [
+      { src: "/images/image_6.jpeg", alt: "Kunjungan ke Arpusda Wonosobo" },
+      { src: "/images/image_7.jpeg", alt: "Kunjungan ke Koramil Kalikajar" },
+      { src: "/images/image_8.jpg", alt: "Kunjungan ke Polsek Kalikajar" },
+    ]
+  },
+  {
+    title: "Rapat & Pertemuan",
+    description: "Kegiatan koordinasi guru dan wali murid",
+    images: [
+      { src: "/images/image_16.jpeg", alt: "Rapat Komite Sekolah" },
+      { src: "/images/image_17.jpeg", alt: "Pertemuan Wali Murid" },
+      { src: "/images/image_18.jpeg", alt: "Kegiatan Rapat Guru" },
+    ]
+  },
+];
+---
+
+<BaseLayout title="Galeri - TK ABA Kalikajar" description="Galeri foto kegiatan dan fasilitas TK ABA Kalikajar">
+  <!-- Page Header -->
+  <section class="bg-gradient-to-r from-green-600 to-green-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Galeri</h1>
+      <p class="text-xl text-green-100">Dokumentasi kegiatan dan fasilitas TK ABA Kalikajar</p>
+    </div>
+  </section>
+
+  <!-- Gallery Categories -->
+  {imageCategories.map((category, index) => (
+    <section class={index % 2 === 0 ? "py-16 bg-white" : "py-16 bg-gray-50"}>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">{category.title}</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">{category.description}</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          {category.images.map((image) => (
+            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow bg-gray-100">
+              <div class="aspect-w-16 aspect-h-12 bg-gray-200">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
+                  loading="lazy"
+                  onerror="this.src='/images/placeholder.jpg'"
+                />
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                <p class="text-white font-semibold">{image.alt}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- All Images Grid -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Semua Foto</h2>
+        <p class="text-gray-600">Koleksi lengkap dokumentasi TK ABA Kalikajar</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {Array.from({ length: 34 }, (_, i) => i + 1).map((num) => {
+          const extensions = ['png', 'jpeg', 'jpg'];
+          const ext = num === 1 || num === 21 ? 'png' : num === 3 || num === 8 || num === 10 || num === 14 || num === 27 || num === 33 ? 'jpg' : 'jpeg';
+          return (
+            <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow bg-gray-100">
+              <div class="aspect-w-1 aspect-h-1 bg-gray-200">
+                <img
+                  src={`/images/image_${num}.${ext}`}
+                  alt={`Galeri TK ABA Kalikajar ${num}`}
+                  class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-300"
+                  loading="lazy"
+                  onerror="this.style.display='none'"
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-gradient-to-r from-green-600 to-green-700 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ingin Melihat Langsung?</h2>
+      <p class="text-xl mb-8 text-green-100">
+        Kunjungi TK ABA Kalikajar dan lihat sendiri fasilitas dan kegiatan kami
+      </p>
+      <a href="/kontak" class="inline-block bg-white text-green-700 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition-colors text-lg">
+        Hubungi Kami
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Aspect ratio utilities */
+  .aspect-w-16 {
+    position: relative;
+    padding-bottom: calc(9 / 16 * 100%);
+  }
+  .aspect-w-16 > img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .aspect-w-1 {
+    position: relative;
+    padding-bottom: 100%;
+  }
+  .aspect-w-1 > img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+</style>
