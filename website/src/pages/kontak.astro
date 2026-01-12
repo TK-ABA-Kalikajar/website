@@ -302,7 +302,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <script>
   // Contact form handling
-  const form = document.getElementById('contactForm');
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
   const formMessage = document.getElementById('formMessage');
 
   form?.addEventListener('submit', (e) => {
@@ -316,7 +316,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     // Reset form
-    form.reset();
+    form?.reset();
 
     // Hide message after 5 seconds
     setTimeout(() => {
