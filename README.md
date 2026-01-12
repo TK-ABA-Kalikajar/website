@@ -111,7 +111,7 @@ The website is deployed on **Vercel** with automatic deployments on push to `mai
 
 Domain `tkabakalikajar.sch.id` is configured with:
 - **Registrar:** Domainesia
-- **DNS:** A record pointing to Vercel (`76.76.21.21`)
+- **DNS:** A record pointing to Vercel (`216.198.79.1`)
 - **SSL:** Automatic via Vercel (Let's Encrypt)
 
 See [VERCEL_DEPLOYMENT.md](website/VERCEL_DEPLOYMENT.md) for detailed deployment instructions.

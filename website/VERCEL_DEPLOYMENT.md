@@ -61,7 +61,7 @@ Login to Domainesia and add these DNS records:
 
 | Type | Name/Host | Value/Target | TTL |
 |------|-----------|--------------|-----|
-| **A** | `@` | `76.76.21.21` | 3600 |
+| **A** | `@` | `216.198.79.1` | 3600 |
 | **CNAME** | `www` | `cname.vercel-dns.com` | 3600 |
 
 **How to add in Domainesia:**
